@@ -1,0 +1,65 @@
+{% extends 'forms/form2.html' %}
+{% load static %}
+{% block title %}Add Slide{% endblock %}
+
+{% block content %}
+<body style="background-color: #E2E2E2;">
+
+         <div class="container">
+           <div class="row">
+
+                <div class="col-md-8 col-md-offset-2">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h2>Enter Slide Details</h2><hr />
+                        {% for m in messages %}
+                            <div class="alert alert-danger alert-dismissible show" role="alert">
+                             <strong>{{m}}</strong>
+                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+                            </div>
+                        {%endfor%}
+                       <br />
+                        <div class="form-group">
+                            <label>Enter Title</label>
+                            <input class="form-control" type="text" name="title">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3" name="body"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Index</label>
+                            <input class="form-control" type="number" name="index" placeholder="Which position do you want the slide to be?">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input class="form-control" type="number" name="price" placeholder="Price is optional">
+                        </div>
+                        <div class="form-group">
+                            <label>Link</label>
+                            <input class="form-control" type="text" name="link" placeholder="Link is optional">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-4">Display Image</label>
+                            <div class="">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="{% static 'assets/img/demoUpload.jpg' %}" alt="" /></div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                                        <span class="btn btn-file btn-primary"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input name="image" type="file"></span>
+                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info">Submit </button>
+                    </form>
+
+                </div>
+           </div>
+        </div>
+
+</body>
+
+{% endblock %}
+

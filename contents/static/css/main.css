@@ -30,9 +30,14 @@
  *  01. webfonts and iconfonts - (_document-setup)
  *
  * ------------------------------------------------------------------- */
+  {% load static %}
 @import url("font-awesome/css/font-awesome.min.css");
 @import url("micons/micons.css");
 @import url("fonts.css");
+
+@import url('https://fonts.googleapis.com/css?family=Lora:300,400,500,600,700|Montserrat:300');
+@import url('https://fonts.googleapis.com/css?family=Cardo:300,400,500,600,700|Oswald');
+@import url('https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700');
 
 
 /* ===================================================================
@@ -64,8 +69,9 @@ html, body {
 
 body {
   background: #111111;
-  font-family: sans-serif;
+  font-family: 'Open Sans',sans-serif;
   font-size: 1.6rem;
+  font-weight: 300;
   line-height: 3rem;
   color: #353535;
   margin: 0;
@@ -95,7 +101,8 @@ a:hover, a:focus {
  * ------------------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6,
 .h01, .h02, .h03, .h04, .h05, .h06 {
-  font-family: "montserrat-bold", sans-serif;
+  font-family: "Archivo", sans-serif;
+  font-weight: 700;
   color: #151515;
   font-style: normal;
   text-rendering: optimizeLegibility;
@@ -179,9 +186,6 @@ em, i {
   font-family: "librebaskerville-italic", serif;
 }
 
-strong, b {
-  font-family: "librebaskerville-bold", serif;
-}
 
 small {
   font-size: 1.1rem;
@@ -1786,7 +1790,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   max-width: 850px;
 }
 #about span {
-  color: #07617d;
+  color: #f8a727;
 }
 #about h3 {
   font-family: "montserrat-bold", sans-serif;
@@ -1807,7 +1811,6 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 }
 */
 #about .lead {
-  font-family: "librebaskerville-bold", serif;
   font-size: 4rem;
   line-height: 1.8;
   color: #2e383f;
@@ -3000,10 +3003,96 @@ padding:0;
 .p-d-row {
     margin: 7em 0 1em;
     max-width: unset;
+}.card-div {
+    background: #f6c453;
+}
+.card-post-dit-div {
+    border: unset;
+}
+.card-div-title {
+    color: #0d0d0d;
+    font-weight: bold;
+}
+.card-div-date {
+    color: #adb5bd;
+    font-weight: bold;
+}
+.card-div-date-lead {
+    color: #0d0d0d;
+    font-weight: bold;
+}
+.title {
+    background: #183a1d;
+    color: #fefbe9;
+    padding: 5px;
+    border-radius: 3px;
 }
 .post-card {
-    border: unset;
-    padding: 0 20px;
+    top: unset;
+    bottom: 0;
+    background: #fef9f89e;
+}
+.post-card-lead {
+    top: unset;
+    bottom: 0;
+    background: #ffffff;
+    padding: 0 15px;
+}
+.post-dit-text{
+    margin: 0 70px;
+}
+.post-dit-sec{
+    padding-top: 100px !important;
+}
+.p-img {
+    width: 100%;
+}
+.post-dit-cap{
+    background: #183a1d;
+    padding: 10px;
+}
+.post-dit-body {
+    color: #000;
+}
+.s-img-dit-lead {
+    height: 350px;
+}
+.post-detail {
+    background: #fefbe9;
+    padding: 0 5px;
+        padding-top: 100px;
+}
+.blog-title {
+    font-weight: 600;
+}
+.blog-caption {
+    font-size: 2em;
+}
+.blog-caption-sm {
+    font-size: 1em;
+}
+.blog-caption-sm-lead {
+    font-size: 3em;
+}
+.s-img {
+    background: blue;
+    height: 460px;
+}
+.s-img-sm {
+    height: 200px;
+}
+.post-fig {
+    margin: 0;
+}
+.post-header {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.m-t-30 {
+    margin-top: 30px;
+}
+.cat-show {
+    margin-bottom: 0;
 }
 /* ------------------------------------------------------------------- 
  * responsive:
@@ -3034,6 +3123,18 @@ padding:0;
     left: 50%;
     margin-left: -50px;
   }
+  .col-sm {
+        width: 50% !important;
+    }
+    .s-img-sm {
+        height: 100px;
+    }
+    .card-div-date {
+        font-size: 0.7em;
+    }
+    .cat-show {
+        margin-bottom: 3rem;
+    }
 }
 @media only screen and (max-width: 600px) {
   .footer-bottom {
@@ -3044,5 +3145,23 @@ padding:0;
   }
   .footer-bottom .copyright span::after {
     display: none;
+  }
+  .s-img {
+        height: unset;
+    }
+    .s-img-dit-lead {
+        height: 200px;
+    }
+  .blog-caption {
+    font-size: 1em;
+  }
+  .blog-caption-sm-lead {
+    font-size: 2em;
+  }
+  .post-dit-sec{
+    padding-top: 50px !important;
+  }
+  .post-dit-text {
+    margin: 0 20px;
   }
 }

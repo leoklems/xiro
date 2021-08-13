@@ -26,8 +26,8 @@ class Author(models.Model):
         ('Miss', 'Miss'),
         ('Ms', 'Ms'),
     )
-    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE,
-                                related_name="student", blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,
+                                related_name="author", blank=True)
     uid = models.SlugField(max_length=10, null=True, blank=True)
     gender = models.CharField(max_length=7, choices=GENDER, null=True, blank=True)
     title = models.CharField(max_length=7, default='', choices=TITLE, null=True, blank=True)
@@ -36,6 +36,24 @@ class Author(models.Model):
 
     def __str__(self):
         return f"{self.user}"
+
+
+class Activity(models.Model):
+    TYPE = (
+        ('Login', 'Login'),
+        ('Logout', 'Logout'),
+        ('Add', 'Add'),
+        ('Update', 'Update'),
+        ('Delete', 'Delete'),
+    )
+    actor = models.ForeignKey(Author, on_delete=models.CASCADE,
+                                related_name="actor", blank=True)
+    type = models.CharField(max_length=7, default='', choices=TYPE, null=True, blank=True)
+    action = models.CharField(max_length=100, blank=True, null=True)
+    action_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.actor} {self.action_date} {self.type}"
 
 
 class Slide(models.Model):
@@ -53,16 +71,30 @@ class Slide(models.Model):
         return f"{self.title}"
 
 
+class PostCategory(models.Model):
+    name = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return f"{self.name}"
+
+
 class Post(models.Model):
 
     title = models.CharField(max_length=50)
     sub_heading = models.CharField(max_length=100)
+    categories = models.ManyToManyField(PostCategory,
+                                   blank=True, null=True, related_name="post_categories")
     body = RichTextField()
-    index = models.IntegerField(unique=True, null=True, blank=True)
+    lead = models.BooleanField(default=False, null=True, blank=True)
     author = models.ForeignKey(Author, related_name='post_author', on_delete=models.CASCADE, null=True, blank=True)
     post_id = models.SlugField(max_length=20, null=True, blank=True)
     image = models.ImageField(upload_to='post/', default="media/blog.jpeg", blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+    views = models.IntegerField(default=0, null=True, blank=True)
 
     def time_published(self):
         current = timezone.now()
@@ -109,6 +141,19 @@ class Post(models.Model):
                 return str(diff.days // 365) + " year ago "
             else:
                 return str(diff.days // 365) + " years ago "
+
+        class Meta:
+            ordering = "index"
+
+    def __str__(self):
+        return f"{self.title}"
+
+
+class PostImage(models.Model):
+
+    title = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='post/images/')
+    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.title}"

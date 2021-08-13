@@ -1,0 +1,108 @@
+
+{% extends 'staff/main.html' %}
+{% load static %}
+{% block title %}{{object.user}}'s Activities{% endblock %}
+
+{% block content %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+<!--                        <h1 class="page-head-line">{{object.user.first_name}}  {{object.user.last_name}}</h1>-->
+                        <h1 class="page-subhead-line">{{object.user}}'s details
+
+                        </h1>
+
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row">
+                        <section class="row page-section padding-60">
+
+                                    <div class="col-md-2">
+                                        <div class="text-center">
+                                        <img class="img-responsive p-img profile-user-img" src="{{object.profile_pic.url}}" alt="">
+                                        <br/>
+                                        <center><strong>{{object.title}} {{object.user.first_name}} {{object.user.last_name}}</strong></center>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4>{{object.user}}'s information</h4>
+                                        <div class="portfolio-details">
+                                            <ul class="list-group list-group-unbordered mb-3">
+                                              <li class="list-group-item">
+                                                <b>Firstname:</b> <span class="float-right">{{object.user.first_name}}</span>
+                                              </li>
+                                              <li class="list-group-item">
+                                                <b>Lastname:</b> <span class="float-right">{{object.user.last_name}}</span>
+                                              </li>
+                                              <li class="list-group-item">
+                                                <b>Username:</b> <span class="float-right">{{object.user.username}}</span>
+                                              </li>
+                                                <li class="list-group-item">
+                                                <b>Email:</b> <span class="float-right">{{object.user.email}}</span>
+                                              </li>
+                                                <li class="list-group-item">
+                                                <b>Title:</b> <span class="float-right">{{object.title}}</span>
+                                              </li>
+                                                <li class="list-group-item">
+                                                <b>Gender:</b> <span class="float-right">{{object.gender}}</span>
+                                              </li>
+
+                                            </ul>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>{{object.user}}'s Activities</h4>
+                                         {% if acts %}
+                                        <div class="portfolio-details">
+                                            <ul class="list-group list-group-unbordered mb-3">
+                                                {% for a in acts %}
+
+                                                  <li class="list-group-item">
+                                                      {% if a.type == 'Login' or a.type == 'Logout' %}
+                                                    <p class="border border-info rounded text-info"><b>{{a.action}} </b> <span class="float-right">{{a.action_date}}</span></p>
+                                                      {%elif a.type == 'Update' %}
+                                                      <p class="border border-warning rounded text-warning"><b>{{a.action}} </b> <span class="float-right">{{a.action_date}}</span></p>
+                                                      {%elif a.type == 'Delete' %}
+                                                      <p class="border border-danger rounded text-danger"><b>{{a.action}} </b> <span class="float-right">{{a.action_date}}</span></p>
+                                                      {%elif a.type == 'Add' %}
+                                                      <p class="border border-success rounded text-success"><b>{{a.action}} </b> <span class="float-right">{{a.action_date}}</span></p>
+
+                                                      {%else%}
+                                                      <p class="border border-primary rounded text-primary"><b>{{a.action}} </b> <span class="float-right">{{a.action_date}}</span></p>
+                                                      {%endif%}
+                                                  </li>
+
+
+
+
+                                                {%endfor%}
+                                                </ul>
+<!--                                                <a href="{%url 'content:staff_activities' object.uid %}" class="btn btn-success btn-sm">View all activities</a>-->
+
+
+
+                                        </div>
+                                        {%else%}
+                                        {%endif%}
+                                    </div>
+<!--                                </div>-->
+<!--                            </div>-->
+                        </section>
+
+<!--                    </div>-->
+
+                </div>
+                <!-- /. ROW  -->
+        </div>
+    </main>
+
+{% endblock %}
+
+
+
+
+

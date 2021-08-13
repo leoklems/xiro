@@ -1,0 +1,59 @@
+{% extends 'staff/main.html' %}
+{% load static %}
+{% block title %}Post Images{% endblock %}
+
+
+{% block content %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+ <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Post Images</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <a href="{% url 'content:add_post_img' %}" type="button" class="btn btn-sm btn-outline-secondary btn-dark">add new image</a>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+        </div>
+      </div>
+        {% if images %}
+        <div class="margin-r-l m-t-30">
+            <div class="row">
+                {% for i in images %}
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6 col-sm">
+                    <div class="service-box">
+                        <figure class="post-fig">
+                                <div class="card">
+                                    <img src="{{i.image.url}}" class="zoom img-fluid s-img-sm" alt="">
+
+                                     <div class="card-body post-card">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="card-title card-div-date">{{i.title}}
+                                                 <div class="btn-group flex-end">
+                                                    <a href="{% url 'content:update_post_img' i.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-warning">
+                                                        <i class="fas fa-pencil-alt"></i> Edit
+                                                    </a>
+                                                    <a href="{% url 'content:delete_post_img' i.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-danger">
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </a>
+                                                 </div>
+                                            </span>
+                                        </div>
+<!--                                        <p class="card-text blog-title"><span class="blog-caption-sm card-div-title">{{i.title}}</span></p>-->
+                                    </div>
+
+                                </div>
+                        </figure>
+                    </div>
+                </div>
+                {%endfor%}
+                </div>
+            </div>
+        {%else%}
+        {%endif%}
+
+
+</main>
+{% endblock %}

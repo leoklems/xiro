@@ -1,0 +1,78 @@
+{% extends 'forms/main.html' %}
+{% load static %}
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+
+<main class="form-signin">
+  <form method="post" enctype="multipart/form-data">
+      {% for m in messages %}
+        <div class="alert alert-danger alert-dismissible show" role="alert">
+         <strong>{{m}}</strong>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+        </div>
+    {%endfor%}
+    {% csrf_token %}
+    <h1 class="h3 mb-3 fw-normal">Registration form</h1>
+
+    <div class="form-group">
+
+      <label for="id_firstname">Title</label>{{profile_form.title}}
+    </div>
+    <div class="form-group">
+      <label for="id_firstname">First name</label>
+      <input type="text" name="firstname" class="form-control" id="id_firstname" placeholder="">
+    </div>
+      <div class="form-group">
+        <label for="id_lastname">Last name</label>
+      <input type="text" name="lastname" class="form-control" id="id_lastname" placeholder="">
+
+    </div>
+      <div class="form-group">
+        <label for="id_username">Username</label>
+      <input type="text" name="username" class="form-control" id="id_username" placeholder="">
+
+    </div>
+      <div class="form-group">
+        <label for="id_email">Username</label>
+      <input type="email" name="email" class="form-control" id="id_email" placeholder="">
+
+    </div>
+    <div class="form-group">
+      <label for="id_password1">Password</label>
+      <input type="password" name="password1" class="form-control" id="id_password1" placeholder="Password">
+
+    </div>
+      <div class="form-group">
+        <label for="id_password2">Password</label>
+      <input type="password" name="password2" class="form-control" id="id_password2" placeholder="Password">
+
+    </div>
+    <div class="fform-group">
+
+      <label for="id_phone">Gender</label>{{profile_form.gender}}
+    </div>
+    <div class="form-group">
+      <label for="id_phone">phone number</label>
+      <input type="tel" name="phone" class="form-control" id="id_phone" placeholder="">
+
+    </div>
+<!--    <div class="form-group">-->
+
+<!--      <label for="id_email">Country</label>{{profile_form.country}}-->
+<!--    </div>-->
+    <div class="form-group">
+      <label for="id_profile_pic">Profile picture</label>
+      <input type="file" name="profile_pic" class="form-control" id="id_profile_pic" placeholder="">
+
+    </div>
+    <br>
+
+
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+  </form>
+</main>
+
+{% endblock %}
+

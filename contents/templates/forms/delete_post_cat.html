@@ -1,0 +1,31 @@
+{% extends 'forms/main.html' %}
+{% load static %}
+{% block title %}Delete {{ object.name }}{% endblock %}
+
+{% block content %}
+<style>
+    body {
+    align-items: unset;
+}
+</style>
+<div class="row">
+    <div class="col-md-offset-4">
+
+
+        <form class="form-horizontal" method="post">
+            <div class="card-body">
+              {% csrf_token %}
+
+                Are you sure you want to delete <strong>{{ object.name }} </strong>?<hr />
+
+            <!-- /.card-body -->
+              <button type="submit" class="btn btn-danger">Delete </button>
+        <!--      <button type="submit" class="btn btn-default float-right">Cancel</button>-->
+
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+

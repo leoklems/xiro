@@ -1,0 +1,83 @@
+ {% extends 'main-others.html' %}
+{% load static %}
+{% block title %}Tech stories{% endblock %}
+
+{% block content %}
+
+  <!-- service -->
+    <section class="post-detail">
+        <div class="row">
+            <div class="col">
+                <span class="post-header">Welcome to Tech Stories</span>
+            </div>
+        </div>
+        {% if post %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="service-box">
+                    <figure class="post-fig">
+                        <a href="{%url 'content:post' post.post_id%}" class="" rel="">
+
+                            <div class="card">
+                                <img src="{{post.image.url}}" class="card-img s-img" alt="">
+
+                                <div class="card-body card-img-overlay post-card">
+
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="card-title card-div-title">{{post.date_added}}</span>
+                                    </div>
+                                    <p class="card-text blog-title"><span class="blog-caption card-div-title">{{post.title}}: {{post.sub_heading}}</span></p>
+                                </div>
+                            </div>
+                        </a>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        {%else%}
+        {%endif%}
+        {% if posts %}
+        <div class="margin-r-l m-t-30">
+            <div class="row">
+                {%for p in posts %}
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-6 col-sm">
+                    <div class="service-box">
+                        <figure class="post-fig">
+                            <a href="{%url 'content:post' p.post_id%}" class="" rel="">
+
+                                <div class="card">
+                                    <img src="{{p.image.url}}" class="zoom img-fluid s-img-sm" alt="">
+
+                                    <div class="card-body card-img-overlay post-card d-none d-xs-none d-md-block">
+
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="card-title card-div-date">{{p.date_added}}</span>
+                                        </div>
+                                        <p class="card-text blog-title"><span class="blog-caption-sm card-div-title">{{p.title}}: {{p.sub_heading}}</span></p>
+                                    </div>
+                                     <div class="card-body post-card d-xs-block d-md-none">
+
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="card-title card-div-date">{{p.date_added}}</span>
+                                        </div>
+                                        <p class="card-text blog-title"><span class="blog-caption-sm card-div-title">{{p.title}}</span></p>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+                {%endfor%}
+                </div>
+            </div>
+        {%else%}
+        {%endif%}
+        </section>
+    </div>
+    <!-- end service -->
+
+	<!-- footer
+   ================================================== -->
+   {%include 'footer.html'%}
+{% endblock %}

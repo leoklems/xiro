@@ -1,0 +1,60 @@
+{% extends 'forms/main.html' %}
+{% load static %}
+{% block title %}Update Slide{% endblock %}
+
+{% block content %}
+<body style="background-color: #E2E2E2;">
+
+        <div class="container">
+           <div class="row">
+
+                <div class="col-md-6 col-md-offset-4">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h2>Enter Slide Details</h2><hr />
+                       <br />
+                        <div class="form-group">
+                            <label>Enter Title</label>
+                            <input class="form-control" type="text" name="title" value="{{object.title}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" rows="3" name="body">{{object.body}}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Index</label>
+                            <input class="form-control" type="number" name="index" value="{{object.index}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input class="form-control" type="number" name="price" placeholder="Price is optional" value="{{object.price}}">
+                        </div>
+                        <div class="form-group">
+                            <label>Link</label>
+                            <input class="form-control" type="text" name="link" placeholder="Link is optional" value="{{object.link}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-4">Display Image</label>
+                            <div class="">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="{{object.image.url}}" alt="" /></div>
+                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                    <div>
+                                        <span class="btn btn-file btn-primary"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input name="image" type="file" value="{{object.image}}"></span>
+                                        <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info">Update </button>
+                        <a href="{% url 'user:slides' %}" class="btn btn-sm btn-primary">Cancel</a>
+                    </form>
+
+                </div>
+           </div>
+        </div>
+
+</body>
+
+{% endblock %}
+

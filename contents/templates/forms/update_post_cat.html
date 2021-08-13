@@ -1,0 +1,30 @@
+{% extends 'forms/main.html' %}
+{% load static %}
+{% block title %}Update {{object.name}}{% endblock %}
+
+{% block content %}
+<body style="background-color: #E2E2E2;">
+
+         <div class="container">
+           <div class="row">
+
+                <div class="col-md-8 col-md-offset-2">
+                    <form method="post">
+                        {% csrf_token %}
+                        <h2>Enter New Post Category Details</h2><hr />
+                       <br />
+                        <div class="form-group">
+                            <label>Enter Name</label>
+                            <input class="form-control" type="text" name="name" value="{{object.name}}">
+                        </div>
+                        <button type="submit" class="btn btn-info">Submit </button>
+                    </form>
+
+                </div>
+           </div>
+        </div>
+
+</body>
+
+{% endblock %}
+

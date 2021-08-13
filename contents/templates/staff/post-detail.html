@@ -1,0 +1,36 @@
+{% extends 'staff/main.html' %}
+{% load static %}
+{% block title %}Post detail{% endblock %}
+
+{% block content %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="col-md-9">
+        <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{object.author.profile_pic.url}}" alt="user image">
+                        <span class="username admin-post-dit-title">
+                          {{object.author}}
+                        </span>
+                        <span class="description">Shared publicly - by :{{object.date_added}}</span>
+                          <button class="btn btn-success btn-sm">
+                              {% if object.lead %}
+                            Lead <i class="fas fa-check mr-1"></i>
+                              {%else%}
+                              Lead <i class="fas fa-times mr-1"></i>
+                              {%endif%}
+                          </button>
+                          <p class="admin-post-dit-title">
+                            {{object.title}}: {{object.sub_heading}}
+                         </p>
+                         <p>
+                            {{object.body|safe}}
+                         </p>
+
+
+                    </div>
+        </div>
+        </div>
+    </main>
+
+{% endblock %}
+
