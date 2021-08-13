@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-oq#w*8ikc%_v&e-dz61dl+x6@m=14yxbsr=jw!))ks)_@$l#v)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "xiro.herokuapp.com", "www.xiro.herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "xiro.herokuapp.com", "www.xiro.herokuapp.com", 'localhost']
 
 
 # Application definition
