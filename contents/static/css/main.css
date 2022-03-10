@@ -38,6 +38,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lora:300,400,500,600,700|Montserrat:300');
 @import url('https://fonts.googleapis.com/css?family=Cardo:300,400,500,600,700|Oswald');
 @import url('https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700');
+@import url('https://fonts.googleapis.com/css?family=Calibri:300,500,700|Cambria:300,700|Optima:300,700|Perpetua:300,700|Copperplate:300,700');
 
 
 /* ===================================================================
@@ -69,7 +70,7 @@ html, body {
 
 body {
   background: #111111;
-  font-family: 'Open Sans',sans-serif;
+  font-family: 'Calibri','Optima';
   font-size: 1.6rem;
   font-weight: 300;
   line-height: 3rem;
@@ -163,11 +164,15 @@ p img {
 }
 
 p.lead {
-  font-family: "montserrat-regular", sans-serif;
+  font-family: 'Optima','Cambria';
   font-size: 2rem;
   line-height: 1.8;
   color: #4f4f4f;
   margin-bottom: 3.6rem;
+}
+.menu-icon {
+    margin-right: 20px;
+    color: #62676a;
 }
 @media only screen and (max-width: 768px) {
   p.lead {
@@ -1264,10 +1269,10 @@ header .header-logo a {
   padding: 0;
   outline: 0;
   border: none;
-  width: 57px;
-  height: 27px;
-  background: url("../images/logo.png") no-repeat center;
-  background-size: 57px 27px;
+  width: 70px;
+  height: 70px;
+  background: url(../images/logo.png) no-repeat center;
+  background-size: 70px 70px;
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
@@ -1327,7 +1332,7 @@ header .header-logo a {
   display: block;
   height: 3px;
   width: 24px;
-  background-color: #FFFFFF;
+  background-color: #000000;
   position: absolute;
   top: 50%;
   right: 9px;
@@ -1356,6 +1361,7 @@ header .header-logo a {
   background: #0c0c0ced;
   color: rgba(255, 255, 255, 0.25);
   font-size: 1.5rem;
+  font-weight: 600;
   line-height: 1.6;
   padding: 3.6rem 3rem;
   height: 100%;
@@ -1391,7 +1397,7 @@ header .header-logo a {
   margin-bottom: 1.5rem;
 }
 #menu-nav-wrap .nav-list {
-  font-family: "montserrat-regular", sans-serif;
+  font-family: 'calibri','Cambria'"montserrat-regular", sans-serif;
   margin: 3.6rem 0 1.5rem 0;
   padding: 0 0 1.8rem 0;
   list-style: none;
@@ -1406,7 +1412,7 @@ header .header-logo a {
   border-top: 1px dotted rgba(255, 255, 255, 0.03);
 }
 #menu-nav-wrap .nav-list li a {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.5);
   display: block;
 }
 #menu-nav-wrap .nav-list li a:hover, 
@@ -1493,10 +1499,10 @@ header .header-logo a {
  * ------------------------------------------------------------------- */
 @media only screen and (max-width: 768px) {
   header .header-logo a {
-    width: 51px;
-    height: 24px;
-    background-size: 51px 24px;
-  }
+    width: 70px;
+    height: 50px;
+    background-size: 70px 70px;
+}
 }
 @media only screen and (max-width: 400px) {
   #header-menu-trigger .header-menu-text {
@@ -1823,8 +1829,8 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
  * ------------------------------------------------------------------- */
 @media only screen and (max-width: 1024px) {
   #about {
-    min-height: 636px;
-  }
+    min-height: unset;
+}
   #about .about-wrap {
     max-width: 800px;
   }
@@ -1848,7 +1854,17 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
     max-width: 600px;
   }
   #about .lead {
-    font-size: 3.1rem;
+    font-size: 1.3rem;
+  }
+
+  .section-intro.with-bottom-sep {
+    padding-bottom: unset;
+  }
+  #menu-nav-wrap {
+    background: #fdfdfd;
+  }
+  #menu-nav-wrap .nav-list li a {
+    color: rgb(0 0 0);
   }
 }
 @media only screen and (max-width: 600px) {
@@ -1860,15 +1876,11 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   }
   #about .lead {
     margin-top: 4.8rem;
-    font-size: 2.8rem;
   }
 }
 @media only screen and (max-width: 500px) {
   #about h3 {
     font-size: 1.5rem;
-  }
-  #about .lead {
-    font-size: 2.5rem;
   }
 }
 @media only screen and (max-width: 400px) {
@@ -1878,9 +1890,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   #about .about-wrap {
     max-width: 380px;
   }
-  #about .lead {
-    font-size: 2.3rem;
-  }
+
 }
 
 
@@ -1954,7 +1964,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   color: #f9a828;
 }
 #services .services-list .h05 {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   line-height: 1.765;
   color: #FFFFFF;
   margin-bottom: 3rem;
@@ -1977,6 +1987,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 @media only screen and (max-width: 768px) {
   #services {
     padding: 12rem 0 12rem;
+    min-height: unset;
   }
   #services .services-content {
     max-width: 550px;
@@ -1985,15 +1996,17 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
     padding: 0 15px;
   }
   #services .services-list .icon i {
-    font-size: 5.1rem;
+    font-size: 3rem;
   }
+  #services .services-list .h05 {
+    font-size: 1rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
 }
 @media only screen and (max-width: 600px) {
   #services .services-list .service-item {
     padding: 0 10px;
-  }
-  #services .services-list .icon i {
-    font-size: 5rem;
   }
 }
 @media only screen and (max-width: 400px) {
@@ -2780,7 +2793,6 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 
   .contact-info {
     width: 100%;
-    margin-top: 3.6rem;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -2834,6 +2846,9 @@ footer h4.h05::after {
   position: absolute;
   bottom: 0;
   left: 0;
+}
+.footer-brand{
+    color: #e2b84c;
 }
 
 /* footer main
@@ -2969,7 +2984,7 @@ padding:0;
 
 }
 .blog-caption {
-   font-family: Sans-serif;
+   font-family: 'Cambria','Calibri';
    font-weight: 600;
 }
 .blog-caption-dit {
@@ -3014,7 +3029,7 @@ padding:0;
     font-weight: bold;
 }
 .card-div-date {
-    color: #adb5bd;
+    color: #4b4c97;
     font-weight: bold;
 }
 .card-div-date-lead {
@@ -3064,6 +3079,7 @@ padding:0;
 }
 .blog-title {
     font-weight: 600;
+    margin-bottom: unset;
 }
 .blog-caption {
     font-size: 2em;
@@ -3087,6 +3103,7 @@ padding:0;
 .post-header {
     font-size: 1.5em;
     font-weight: bold;
+    font-family: 'Cambria';
 }
 .m-t-30 {
     margin-top: 30px;
@@ -3111,7 +3128,7 @@ padding:0;
     max-width: 480px;
   }
   .footer-main [class*="col-"] {
-    margin-bottom: 3.6rem;
+
   }
 
   footer h4.h05 {
@@ -3133,15 +3150,18 @@ padding:0;
         font-size: 0.7em;
     }
     .cat-show {
-        margin-bottom: 3rem;
+
     }
+    .footer-bottom {
+    font-size: 1rem;
+   }
 }
 @media only screen and (max-width: 600px) {
   .footer-bottom {
     padding-bottom: .6rem;
   }
   .footer-bottom .copyright span {
-    display: block;
+
   }
   .footer-bottom .copyright span::after {
     display: none;
@@ -3162,6 +3182,7 @@ padding:0;
     padding-top: 50px !important;
   }
   .post-dit-text {
-    margin: 0 20px;
+    margin: 0 10px;
+    font-family: 'Cambria';
   }
 }

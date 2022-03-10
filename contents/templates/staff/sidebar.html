@@ -9,57 +9,40 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{%url 'content:s_staff'%}">
-              <i class="fas fa-user bg-yellow"></i>
+              <i class="fas fa-users bg-yellow"></i>
               Staff
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{%url 'content:s_posts'%}">
-              <i class="nav-icon fas fa-book"></i>
+              <i class="nav-icon fas fa-pen"></i>
               Posts
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{%url 'content:post_images'%}">
-              <i class="nav-icon fas fa-ellipsis-h"></i>
+              <i class="nav-icon fas fa-camera"></i>
               Post Images
             </a>
           </li>
 
 
         </ul>
+      <form class="form-inline w-100" method="get">
+                  <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append" style="display: flex;">
+                      <button class="btn btn-navbar" type="submit">
+                        <i class="fas fa-search"></i>
+                      </button>
 
-<!--        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">-->
-<!--          <span>Saved reports</span>-->
-<!--          <a class="link-secondary" href="#" aria-label="Add a new report">-->
-<!--            <span data-feather="plus-circle"></span>-->
-<!--          </a>-->
-<!--        </h6>-->
-<!--        <ul class="nav flex-column mb-2">-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" href="#">-->
-<!--              <span data-feather="file-text"></span>-->
-<!--              Current month-->
-<!--            </a>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" href="#">-->
-<!--              <span data-feather="file-text"></span>-->
-<!--              Last quarter-->
-<!--            </a>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" href="#">-->
-<!--              <span data-feather="file-text"></span>-->
-<!--              Social engagement-->
-<!--            </a>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <a class="nav-link" href="#">-->
-<!--              <span data-feather="file-text"></span>-->
-<!--              Year-end sale-->
-<!--            </a>-->
-<!--          </li>-->
-<!--        </ul>-->
+                    </div>
+                  </div>
+                </form>
+        <div class="navbar-nav">
+          <div class="nav-item text-nowrap">
+            <a class="nav-link px-3" href="{%url 'content:logout'%}">Sign out</a>
+          </div>
+        </div>
       </div>
     </nav>

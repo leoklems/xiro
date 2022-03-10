@@ -9,20 +9,28 @@
        <div class="row py-5 post-dit-sec">
             <div class="intro-wrap col-md-9">
                 <div class="card card-post-dit-div">
-                    <div class="post-card-lead">
-                        <p class="card-text blog-title"><span class="blog-caption-sm-lead card-div-title">{{object.title}}: {{object.sub_heading}}</span></p>
 
+                    <img class="card-img blog-img d-xs-block d-md-none" src="{{object.image.url}}">
+                    <div class="post-card-lead">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="card-title card-div-date-lead">{{object.date_added.date}} | By <strong>{{object.author.title}} {{object.author.user.first_name}} {{object.author.user.last_name}}</strong></span>
+                            <span class="card-title card-div-date-lead">
+                                <span class="icon menu-icon"><i class="icon-calendar"></i></span>
+                                {{object.date_added.date}} | By
+                                <strong>
+                                    {{object.author.title}}
+                                    {{object.author.user.first_name}} {{object.author.user.last_name}}
+                                </strong>
+                            </span>
                         </div>
+                        <p class="card-text blog-title">
+                            <span class="blog-caption-sm-lead card-div-title">{{object.title}}: {{object.sub_heading}}
+                            </span></p>
                         <p class="cat-show">
                             {% for c in object.categories.all %}
                                 <span class="badge bg-{% cycle 'warning' 'success' 'info' %}">{{c}} </span>
                             {%endfor%}
                         </p>
                     </div>
-                    <img class="card-img blog-img d-xs-block d-md-none" src="{{object.image.url}}">
-
                     <div class="card-body post-dit-text">
                         <hr>
                         <p class="card-text">
@@ -41,22 +49,12 @@
 	   {% if posts %}
 	   <div class="row py-5">
    		<div class="container">
-            <h1 class="animate-this">Hot Topics</h1>
+            <h1 class="animate-this">More Stories</h1>
             <hr>
 				{%for b in posts %}
 
 				<div class="col-md-3 col-sm-6 col-xs-6 col-sm">
-<!--				  		<div class="card ">-->
-<!--					<img class="card-img blog-img" src="{{b.image.url}}">-->
 
-<!--					<div class="card-body">-->
-
-<!--					  <div class="d-flex justify-content-between align-items-center">-->
-<!--						<small class="text-date">{{b.date_added}}</small>-->
-<!--					  </div>-->
-<!--						<p class="card-text "><span class="blog-caption">{{b.title}}: {{b.sub_heading}}</span></p>-->
-<!--					</div>-->
-<!--				  </div>-->
                     <a href="{%url 'content:post' b.post_id %}">
                                 <div class="card post-div animate-this">
                                     <img src="{{b.image.url}}" class="zoom img-fluid s-img-sm" alt="">
@@ -66,14 +64,20 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="card-title card-div-date">{{b.date_added}}</span>
                                         </div>
-                                        <p class="card-text blog-title"><span class="blog-caption-sm card-div-title">{{b.title}}: {{b.sub_heading}}</span></p>
+                                        <p class="card-text blog-title">
+                                            <span class="blog-caption-sm card-div-title">{{b.title}}: {{b.sub_heading}}
+                                            </span>
+                                        </p>
                                     </div>
                                      <div class="card-body post-card d-xs-block d-md-none">
 
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="card-title card-div-date">{{b.date_added}}</span>
                                         </div>
-                                        <p class="card-text blog-title"><span class="blog-caption-sm card-div-title">{{b.title}}</span></p>
+                                        <p class="card-text blog-title">
+                                            <span class="blog-caption-sm card-div-title">{{b.title}}
+                                            </span>
+                                        </p>
                                     </div>
 
                                 </div>
