@@ -8,7 +8,7 @@
     <section class="post-detail">
         <div class="row">
             <div class="col">
-                <span class="post-header">Welcome to Tech Stories</span>
+                <span class="post-header">Tech Stories</span>
             </div>
         </div>
         {% if post %}
@@ -24,7 +24,9 @@
                                 <div class="card-body card-img-overlay post-card">
 
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="card-title card-div-title">{{post.date_added}}</span>
+                                        <span class="card-title card-div-title">
+                                            <span class="icon menu-icon"><i class="icon-calendar"></i></span>
+                                            {{post.date_added}}</span>
                                     </div>
                                     <p class="card-text blog-title"><span class="blog-caption card-div-title">{{post.title}}: {{post.sub_heading}}</span></p>
                                 </div>
@@ -51,14 +53,18 @@
                                     <div class="card-body card-img-overlay post-card d-none d-xs-none d-md-block">
 
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <span class="card-title card-div-date">{{p.date_added}}</span>
+                                            <span class="card-title card-div-date">
+                                                <span class="icon menu-icon"><i class="icon-calendar"></i></span>
+                                                {{p.date_added}}</span>
                                         </div>
                                         <p class="card-text blog-title"><span class="blog-caption-sm card-div-title">{{p.title}}: {{p.sub_heading}}</span></p>
                                     </div>
                                      <div class="card-body post-card d-xs-block d-md-none">
 
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <span class="card-title card-div-date">{{p.date_added}}</span>
+                                            <span class="card-title card-div-date">
+                                                <span class="icon menu-icon"><i class="icon-calendar"></i></span>
+                                                {{p.date_added}}</span>
                                         </div>
                                         <p class="card-text blog-title"><span class="blog-caption-sm card-div-title">{{p.title}}</span></p>
                                     </div>

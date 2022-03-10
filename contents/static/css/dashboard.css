@@ -1,5 +1,18 @@
+
+ {% load static %}
+@import url("font-awesome/css/font-awesome.min.css");
+@import url("micons/micons.css");
+@import url("fonts.css");
+
+@import url('https://fonts.googleapis.com/css?family=Lora:300,400,500,600,700|Montserrat:300');
+@import url('https://fonts.googleapis.com/css?family=Cardo:300,400,500,600,700|Oswald');
+@import url('https://fonts.googleapis.com/css?family=Archivo:500|Open+Sans:300,700');
+@import url('https://fonts.googleapis.com/css?family=Calibri:300,500,700|Cambria:300,700|Optima:300,700|Perpetua:300,700|Copperplate:300,700');
+
+
 body {
-  font-size: .875rem;
+  background-color: #f7f7f7!important;
+  font-family: 'Calibri','Optima';
 }
 
 .feather {
@@ -24,7 +37,7 @@ body {
   z-index: 100; /* Behind the navbar */
   padding: 48px 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-  background: #4b545c;
+  background: #343a40;
 }
 
 @media (max-width: 767.98px) {
@@ -196,7 +209,29 @@ padding-0 {
     float: right!important;
 }
 .text-center {
-    text-align: center!important;
+    text-align: unset!important;
+}
+.card {
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    margin-bottom: 1rem;
+}
+.dash-item{
+    background: white;
+}
+.dash-link {
+    text-decoration: none;
+    color: black;
+}
+a.dash-link:hover {
+    color: purple;
+}
+.dash-icon {
+    margin-bottom:2rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    border: solid 1px;
+    border-radius: 50%;
 }
 @media (min-width: 992px) {
     .prof-dit-inf {

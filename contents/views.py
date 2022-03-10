@@ -4,6 +4,7 @@ from calendar import monthrange
 from random import randint
 from time import timezone
 
+from django.core.paginator import Paginator
 from django.http import JsonResponse, FileResponse, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
@@ -36,6 +37,7 @@ def loginPage(request):
                             password=password)
 
         if user is not None:
+            login(request, user)
             staff = Author.objects.get(user=request.user)
             act = Activity(actor=staff, action='Login')
             act.save()
@@ -171,10 +173,15 @@ class StaffActivities(LoginRequiredMixin, DetailView):
     slug_field = 'uid'
     slug_url_kwarg = 'uid'
 
+    # paginate_by = 1
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         acts = Activity.objects.filter(actor=self.object).order_by('-action_date')
-        context["acts"] = acts
+        paginator = Paginator(acts, 10)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        context["acts"] = page_obj
         return context
 
 
@@ -499,7 +506,7 @@ class FirstnameUpdate(LoginRequiredMixin, UpdateView):
         staff = Author.objects.get(user=self.request.user)
         act = Activity(actor=staff, type='Update', action=f'first name updated for {self.object}')
         act.save()
-        return reverse('content:staff_detail', kwargs={'uid': self.object.user.id})
+        return reverse('content:staff_detail', kwargs={'uid': self.object.id})
 
 
 class SurnameUpdate(LoginRequiredMixin, UpdateView):
@@ -511,7 +518,7 @@ class SurnameUpdate(LoginRequiredMixin, UpdateView):
         staff = Author.objects.get(user=self.request.user)
         act = Activity(actor=staff, type='Update', action=f'Surname updated for {self.object}')
         act.save()
-        return reverse('content:staff_detail', kwargs={'uid': self.object.user.id})
+        return reverse('content:staff_detail', kwargs={'uid': self.object.id})
 
 # ------------------------ Update Student -----------------------
 

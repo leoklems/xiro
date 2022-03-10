@@ -7,208 +7,274 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
-        <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+      </div>
+      <section class="container-fluid">
+          <div class="row">
+              <div class="col-sm-6 col-lg-4">
+                  <a class="dash-link"  href="{%url 'content:s_posts'%}">
+                  <div class="card dash-item">
+
+                      <div class="card-header">
+                          <div class="dash-icon">
+                            <i class="nav-icon fas fa-pen"></i>
+                          </div>
+                          <div class="">
+                              Posts
+                              <p>{{posts.count}}</p>
+                          </div>
+                      </div>
+
+                  </div>
+                  </a>
+              </div>
+              <div class="col-sm-6 col-lg-4">
+                  <a class="dash-link"  href="{%url 'content:s_posts'%}">
+                  <div class="card">
+
+                      <div class="card-header">
+                          <div class="dash-icon">
+                            <i class="nav-icon fas fa-layer-group"></i>
+                          </div>Post Cathegories
+                          <div class="">
+                              <p>{{post_cats.count}}</p>
+                        </div>
+                      </div>
+
+                  </div>
+                  </a>
+              </div>
+              <div class="col-sm-6 col-lg-4">
+                  <a class="dash-link"  href="{%url 'content:s_staff'%}">
+                  <div class="card">
+
+                      <div class="card-header">
+                          <div class="dash-icon">
+                            <i class="nav-icon fas fa-users"></i>
+                          </div>Staff
+                          <div class="">
+                              <p>{{staff.count}}</p>
+                      </div>
+                      </div>
+
+                  </div>
+                  </a>
+
+              </div>
+              <div class="col-sm-6 col-lg-4">
+                  <a class="dash-link"  href="{%url 'content:s_staff'%}">
+                  <div class="card">
+
+                      <div class="card-header">
+                          <div class="dash-icon">
+                            <i class="nav-icon fas fa-users"></i>
+                          </div>Slides
+                          <div class="">
+                              <p>{{slides.count}}</p>
+                        </div>
+                      </div>
+
+                  </div>
+                  </a>
+
+              </div>
           </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <span data-feather="calendar"></span>
-            This week
-          </button>
-        </div>
-      </div>
+      </section>
 
-        <div class="card card-primary card-outline">
-      <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <span class="fs-3"><i class="nav-icon fas fa-book"></i> Posts</span>
-        <span class="flex-end center">
-          <a href="{% url 'content:add_post' %}" type="button" class="btn btn-sm btn-outline-secondary btn-dark">add new post</a>
-        </span>
-      </div>
-        {% if posts %}
-      <div class="card-body pad table-responsive">
-        <table class="table table-striped table-sm text-center">
-          <thead>
-            <tr>
-              <th scope="col">S/N</th>
-              <th scope="col">Title</th>
-              <th scope="col">Author</th>
-              <th scope="col">Categories</th>
-              <th scope="col">Date added</th>
-              <th scope="col">Controls</th>
-            </tr>
-          </thead>
+<!--      <section class="container-fluid">-->
+<!--        <div class="row">-->
+<!--        <div class="card">-->
+<!--      <div class="card-header d-flex justify-content-between">-->
+<!--          <span class="fs-3"><i class="nav-icon fas fa-pen"></i> Posts</span>-->
+<!--        <span class="flex-end center">-->
+<!--          <a href="{% url 'content:add_post' %}" type="button" class="btn btn-sm btn-outline-secondary btn-dark"><i class="fas fa-plus"></i> post</a>-->
+<!--        </span>-->
+<!--      </div>-->
+<!--        {% if posts %}-->
+<!--      <div class="card-body table-responsive">-->
+<!--        <table class="table table-striped table-sm text-center">-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th scope="col">S/N</th>-->
+<!--              <th scope="col">Title</th>-->
+<!--              <th scope="col">Author</th>-->
+<!--              <th scope="col">Categories</th>-->
+<!--              <th scope="col">Date added</th>-->
+<!--              <th scope="col">Controls</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
 
-          <tbody>
-          {% for p in posts %}
-            <tr>
-              <td>{{forloop.counter}}</td>
-              <td>{{p.title}}</td>
-              <td>{{p.author.title}} {{p.author.user.first_name}} {{p.author.user.last_name}}</td>
-              <td>{% for c in p.categories.all%} {{c}},{%endfor%}</td>
-              <td>{{p.date_added}}</td>
-              <td>
-                <div class="btn-group">
-                <a href="{% url 'content:a_post' p.post_id %}" type="button" class="btn btn-sm btn-outline-secondary btn-light">
-                    <i class="fas fa-folder"></i> View
-                </a>
-                <a href="{% url 'content:update_post' p.post_id %}" type="button" class="btn btn-sm btn-outline-secondary btn-warning">
-                    <i class="fas fa-pencil-alt"></i> Edit
-                </a>
-                <a href="{% url 'content:delete_post' p.post_id %}" type="button" class="btn btn-sm btn-outline-secondary btn-danger">
-                    <i class="fas fa-trash"></i> Delete
-                </a>
-              </div>
-              </td>
-            </tr>
-          {%endfor%}
-          </tbody>
-        </table>
-      </div>
-        {%else%}
-        {%endif%}
-        </div>
-
-
-
-        <div class="card card-primary card-outline">
-      <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <span class="fs-3"><i class="nav-icon fas fa-book"></i> Posts Categories</span>
-        <span class="flex-end center">
-          <a href="{% url 'content:add_post_cat' %}" type="button" class="btn btn-sm btn-outline-secondary btn-dark">add new post</a>
-        </span>
-      </div>
-    {% if post_cats %}
-      <div class="card-body pad table-responsive">
-        <table class="table table-striped table-sm text-center">
-          <thead>
-            <tr>
-              <th scope="col">S/N</th>
-              <th scope="col">Name</th>
-              <th scope="col">Controls</th>
-            </tr>
-          </thead>
-
-          <tbody>
-          {% for p in post_cats %}
-            <tr>
-              <td>{{forloop.counter}}</td>
-              <td>{{p.name}}</td>
-              <td>
-                <div class="btn-group">
-                <a href="{% url 'content:update_post_cat' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-warning">
-                    <i class="fas fa-pencil-alt"></i> Edit
-                </a>
-                <a href="{% url 'content:delete_post_cat' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-danger">
-                    <i class="fas fa-trash"></i> Delete
-                </a>
-              </div>
-              </td>
-            </tr>
-          {%endfor%}
-          </tbody>
-        </table>
-      </div>
-    {%else%}
-    {%endif%}
-        </div>
-
-
-    {% if slides %}
-        <div class="card card-primary card-outline">
-      <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <span class="fs-3"><i class="nav-icon fas fa-ellipsis-h"></i> Slides</span>
-        <a href="{% url 'content:add_slide' %}" class="btn btn-sm btn-outline-secondary btn-dark">add new slide</a>
-      </div>
-      <div class="card-body pad table-responsive">
-        <table class="table table-striped table-sm text-center">
-          <thead>
-            <tr>
-              <th scope="col">S/N</th>
-              <th scope="col">Title</th>
-              <th scope="col">Body</th>
-              <th scope="col">Conteols</th>
-            </tr>
-          </thead>
-
-          <tbody>
-          {% for p in slides %}
-            <tr>
-              <td>{{forloop.counter}}</td>
-              <td>{{p.title}}</td>
-              <td>{{p.body}}</td>
-              <td>
-                <div class="btn-group">
-    <!--                        <button type="button" class="btn btn-default">Left</button>-->
-    <!--                        <button type="button" class="btn btn-default">Middle</button>-->
-    <!--                        <button type="button" class="btn btn-default">Right</button>-->
-
-                <a href="{% url 'content:a_slide' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-light">
-                    <i class="fas fa-folder"></i> View</a>
-                <a href="{% url 'content:update_slide' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-warning">
-                    <i class="fas fa-pencil-alt"></i> Edit
-                </a>
-                <a href="{% url 'content:delete_slide' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-danger">
-                    <i class="fas fa-trash"></i> Delete
-                </a>
-              </div>
-              </td>
-            </tr>
-          {%endfor%}
-          </tbody>
-        </table>
-      </div>
-        </div>
-    {%else%}
-    {%endif%}
-
-
-        <div class="card card-primary card-outline">
-      <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <span class="fs-3"><i class="fas fa-user bg-yellow"></i> Staff</span>
-        <a href="{% url 'content:add_staff' %}" class="btn btn-sm btn-outline-secondary btn-dark">add new staff</a>
-      </div>
-        {% if staff %}
-      <div class="card-body pad table-responsive">
-        <table class="table table-striped table-sm text-center">
-          <thead>
-            <tr>
-              <th scope="col">S/N</th>
-              <th scope="col">Name</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Controls</th>
-            </tr>
-          </thead>
-
-          <tbody>
-          {% for p in staff %}
-            <tr>
-              <td>{{forloop.counter}}</td>
-              <td>{{p.title}} {{p.user.first_name}} {{p.user.last_name}}</td>
-              <td>{{p.gender}}</td>
-              <td>
-                <div class="btn-group">
-    <!--                        <button type="button" class="btn btn-default">Left</button>-->
-    <!--                        <button type="button" class="btn btn-default">Middle</button>-->
-    <!--                        <button type="button" class="btn btn-default">Right</button>-->
-    <!--                      -->
-                <a href="{% url 'content:staff_detail' p.uid %}" type="button" class="btn btn-sm btn-outline-secondary btn-warning">
-                    <i class="fas fa-folder"></i> View
-                </a>
-<!--                <a href="{% url 'content:delete_staff' p.uid %}" type="button" class="btn btn-sm btn-outline-secondary btn-danger">-->
+<!--          <tbody>-->
+<!--          {% for p in posts %}-->
+<!--            <tr>-->
+<!--              <td>{{forloop.counter}}</td>-->
+<!--              <td>{{p.title}}</td>-->
+<!--              <td>{{p.author.title}} {{p.author.user.first_name}} {{p.author.user.last_name}}</td>-->
+<!--              <td>{% for c in p.categories.all%} {{c}},{%endfor%}</td>-->
+<!--              <td>{{p.date_added}}</td>-->
+<!--              <td>-->
+<!--                <div class="btn-group">-->
+<!--                <a href="{% url 'content:a_post' p.post_id %}" type="button" class="btn btn-sm btn-outline-secondary btn-light">-->
+<!--                    <i class="fas fa-folder"></i> View-->
+<!--                </a>-->
+<!--                <a href="{% url 'content:update_post' p.post_id %}" type="button" class="btn btn-sm btn-outline-secondary btn-warning">-->
+<!--                    <i class="fas fa-pencil-alt"></i> Edit-->
+<!--                </a>-->
+<!--                <a href="{% url 'content:delete_post' p.post_id %}" type="button" class="btn btn-sm btn-outline-secondary btn-danger">-->
 <!--                    <i class="fas fa-trash"></i> Delete-->
 <!--                </a>-->
-              </div>
-              </td>
-            </tr>
-          {%endfor%}
-          </tbody>
-        </table>
-      </div>
-        {%else%}
-        {%endif%}
-        </div>
+<!--              </div>-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--          {%endfor%}-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--        {%else%}-->
+<!--        {%endif%}-->
+<!--        </div>-->
+<!--        </div>-->
 
+<!--        <div class="row">-->
+<!--        <div class="card">-->
+<!--      <div class="card-header d-flex justify-content-between">-->
+<!--          <span class="fs-3"><i class="nav-icon fas fa-layer-group"></i> Posts Categories</span>-->
+<!--        <span class="flex-end center">-->
+<!--          <a href="{% url 'content:add_post_cat' %}" type="button" class="btn btn-sm btn-outline-secondary btn-dark"><i class="fas fa-plus"></i> post category</a>-->
+<!--        </span>-->
+<!--      </div>-->
+<!--    {% if post_cats %}-->
+<!--      <div class="card-body table-responsive">-->
+<!--        <table class="table table-striped table-sm text-center">-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th scope="col">S/N</th>-->
+<!--              <th scope="col">Name</th>-->
+<!--              <th scope="col">Controls</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
+
+<!--          <tbody>-->
+<!--          {% for p in post_cats %}-->
+<!--            <tr>-->
+<!--              <td>{{forloop.counter}}</td>-->
+<!--              <td>{{p.name}}</td>-->
+<!--              <td>-->
+<!--                <div class="btn-group">-->
+<!--                <a href="{% url 'content:update_post_cat' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-warning">-->
+<!--                    <i class="fas fa-pencil-alt"></i> Edit-->
+<!--                </a>-->
+<!--                <a href="{% url 'content:delete_post_cat' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-danger">-->
+<!--                    <i class="fas fa-trash"></i> Delete-->
+<!--                </a>-->
+<!--              </div>-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--          {%endfor%}-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    {%else%}-->
+<!--    {%endif%}-->
+<!--        </div>-->
+<!--        </div>-->
+
+<!--    {% if slides %}-->
+<!--          <div class="row">-->
+<!--        <div class="card">-->
+<!--      <div class="card-header d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">-->
+<!--          <span class="fs-3"><i class="nav-icon fas fa-ellipsis-h"></i> Slides</span>-->
+<!--        <a href="{% url 'content:add_slide' %}" class="btn btn-sm btn-outline-secondary btn-dark"><i class="fas fa-plus"></i> slide</a>-->
+<!--      </div>-->
+<!--      <div class="card-body pad table-responsive">-->
+<!--        <table class="table table-striped table-sm text-center">-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th scope="col">S/N</th>-->
+<!--              <th scope="col">Title</th>-->
+<!--              <th scope="col">Body</th>-->
+<!--              <th scope="col">Conteols</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
+
+<!--          <tbody>-->
+<!--          {% for p in slides %}-->
+<!--            <tr>-->
+<!--              <td>{{forloop.counter}}</td>-->
+<!--              <td>{{p.title}}</td>-->
+<!--              <td>{{p.body}}</td>-->
+<!--              <td>-->
+<!--                <div class="btn-group">-->
+<!--    &lt;!&ndash;                        <button type="button" class="btn btn-default">Left</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;                        <button type="button" class="btn btn-default">Middle</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;                        <button type="button" class="btn btn-default">Right</button>&ndash;&gt;-->
+
+<!--                <a href="{% url 'content:a_slide' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-light">-->
+<!--                    <i class="fas fa-folder"></i> View</a>-->
+<!--                <a href="{% url 'content:update_slide' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-warning">-->
+<!--                    <i class="fas fa-pencil-alt"></i> Edit-->
+<!--                </a>-->
+<!--                <a href="{% url 'content:delete_slide' p.id %}" type="button" class="btn btn-sm btn-outline-secondary btn-danger">-->
+<!--                    <i class="fas fa-trash"></i> Delete-->
+<!--                </a>-->
+<!--              </div>-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--          {%endfor%}-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--        </div>-->
+<!--          </div>-->
+<!--    {%else%}-->
+<!--    {%endif%}-->
+
+<!--        <div class="row">-->
+<!--        <div class="card">-->
+<!--      <div class="card-header d-flex justify-content-between">-->
+<!--          <span class="fs-3"><i class="fas fa-users bg-yellow"></i> Staff</span>-->
+<!--        <a href="{% url 'content:add_staff' %}" class="btn btn-sm btn-outline-secondary btn-dark"><i class="fas fa-plus"></i> staff</a>-->
+<!--      </div>-->
+<!--        {% if staff %}-->
+<!--      <div class="card-body table-responsive">-->
+<!--        <table class="table table-striped table-sm text-center">-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th scope="col">S/N</th>-->
+<!--              <th scope="col">Name</th>-->
+<!--              <th scope="col">Gender</th>-->
+<!--              <th scope="col">Controls</th>-->
+<!--            </tr>-->
+<!--          </thead>-->
+
+<!--          <tbody>-->
+<!--          {% for p in staff %}-->
+<!--            <tr>-->
+<!--              <td>{{forloop.counter}}</td>-->
+<!--              <td>{{p.title}} {{p.user.first_name}} {{p.user.last_name}}</td>-->
+<!--              <td>{{p.gender}}</td>-->
+<!--              <td>-->
+<!--                <div class="btn-group">-->
+<!--    &lt;!&ndash;                        <button type="button" class="btn btn-default">Left</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;                        <button type="button" class="btn btn-default">Middle</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;                        <button type="button" class="btn btn-default">Right</button>&ndash;&gt;-->
+<!--    &lt;!&ndash;                      &ndash;&gt;-->
+<!--                <a href="{% url 'content:staff_detail' p.uid %}" type="button" class="btn btn-sm btn-outline-secondary btn-warning">-->
+<!--                    <i class="fas fa-folder"></i> View-->
+<!--                </a>-->
+<!--&lt;!&ndash;                <a href="{% url 'content:delete_staff' p.uid %}" type="button" class="btn btn-sm btn-outline-secondary btn-danger">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <i class="fas fa-trash"></i> Delete&ndash;&gt;-->
+<!--&lt;!&ndash;                </a>&ndash;&gt;-->
+<!--              </div>-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--          {%endfor%}-->
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--        {%else%}-->
+<!--        {%endif%}-->
+<!--        </div>-->
+<!--        </div>-->
+<!--    </section>-->
 </main>
 {% endblock %}
